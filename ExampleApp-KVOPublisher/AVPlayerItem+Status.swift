@@ -12,7 +12,7 @@ extension AVPlayerItem.Status {
         switch self {
         case .failed: return "Player item failed"
         case .readyToPlay: return "Ready to play"
-        default: return "???"
+        default: return "Loading"
         }
     }
 }
