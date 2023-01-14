@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     
     private var playerController: AVPlayerViewController!
     
+    var playerItemStatusCancellable: AnyCancellable?
+    var cancellables: Set<AnyCancellable> = []
+    
     //MARK: - Viewcycle
     
     override func viewDidLoad() {
@@ -50,6 +53,11 @@ class ViewController: UIViewController {
         let playItem = AVPlayerItem(url: URL(string: "https://download.samplelib.com/mp4/sample-5s.mp4")!)
 
         playerController.player?.replaceCurrentItem(with: playItem)
+        
+        playerItemStatusCancellable = playItem.publisher(for: \.status)
+            .sink { [weak self] status in
+                self?.statusLabel.text = status.stringValue
+            }
     }
     @IBAction func playPressed(_ sender: UIButton) {
         playerController.player?.play()

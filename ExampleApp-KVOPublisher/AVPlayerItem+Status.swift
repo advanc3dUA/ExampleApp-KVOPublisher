@@ -7,8 +7,8 @@
 
 import AVKit
 
-extension AVPlayer.Status {
-    var stringValue: String {
+extension AVPlayerItem.Status {
+    public var stringValue: String {
         switch self {
         case .failed: return "Player item failed"
         case .readyToPlay: return "Ready to play"
