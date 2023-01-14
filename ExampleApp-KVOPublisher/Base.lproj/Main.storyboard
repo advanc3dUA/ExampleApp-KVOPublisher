@@ -32,17 +32,23 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="145" translatesAutoresizingMaskIntoConstraints="NO" id="y6e-Oi-APC">
-                                        <rect key="frame" x="69.333333333333314" y="54.333333333333314" width="235" height="34.333333333333343"/>
+                                        <rect key="frame" x="71.666666666666643" y="54.333333333333314" width="230.33333333333337" height="34.333333333333343"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3WL-4b-xKd">
                                                 <rect key="frame" x="0.0" y="0.0" width="43.333333333333336" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="playPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V6C-YX-L2A"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sm3-mD-jQy">
-                                                <rect key="frame" x="188.33333333333331" y="0.0" width="46.666666666666657" height="34.333333333333336"/>
+                                                <rect key="frame" x="188.33333333333337" y="0.0" width="42" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="stop.fill" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="pause.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="pausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0BP-6i-JwS"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -54,13 +60,24 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UG6-Kp-bNM">
+                                <rect key="frame" x="10" y="578" width="373" height="240"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ci8-Lv-Kp6" secondAttribute="bottom" constant="450" id="3PM-nO-yn6"/>
+                            <constraint firstItem="UG6-Kp-bNM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="3RR-SL-NaS"/>
                             <constraint firstItem="vYB-Pk-6xe" firstAttribute="width" secondItem="ci8-Lv-Kp6" secondAttribute="width" id="452-I0-IJa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UG6-Kp-bNM" secondAttribute="bottom" id="FVo-yb-O52"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UG6-Kp-bNM" secondAttribute="trailing" constant="10" id="Hpa-cF-HPO"/>
                             <constraint firstItem="ci8-Lv-Kp6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="Oz7-1T-0np"/>
+                            <constraint firstItem="UG6-Kp-bNM" firstAttribute="top" secondItem="vYB-Pk-6xe" secondAttribute="bottom" constant="48" id="UDb-62-dvd"/>
                             <constraint firstItem="vYB-Pk-6xe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Yci-Js-jP5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ci8-Lv-Kp6" secondAttribute="trailing" constant="10" id="acg-mJ-wJI"/>
                             <constraint firstItem="vYB-Pk-6xe" firstAttribute="top" secondItem="ci8-Lv-Kp6" secondAttribute="bottom" constant="33" id="jXy-He-90X"/>
@@ -68,6 +85,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logTextView" destination="UG6-Kp-bNM" id="ZtO-o7-j0F"/>
+                        <outlet property="pauseButton" destination="sm3-mD-jQy" id="9vi-pZ-TVl"/>
+                        <outlet property="playButton" destination="3WL-4b-xKd" id="McG-Y1-ldO"/>
+                        <outlet property="statusLabel" destination="lmN-bJ-nbk" id="O3q-MA-PRO"/>
                         <outlet property="videoContainer" destination="ci8-Lv-Kp6" id="0xf-0z-Wmr"/>
                     </connections>
                 </viewController>
@@ -77,10 +98,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pause.fill" catalog="system" width="117" height="128"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
-        <image name="stop.fill" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

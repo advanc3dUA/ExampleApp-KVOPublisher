@@ -13,6 +13,8 @@
 		BF8F8F572972C5ED0067FF22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8F8F552972C5ED0067FF22 /* Main.storyboard */; };
 		BF8F8F592972C5EF0067FF22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF8F8F582972C5EF0067FF22 /* Assets.xcassets */; };
 		BF8F8F5C2972C5EF0067FF22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8F8F5A2972C5EF0067FF22 /* LaunchScreen.storyboard */; };
+		BF8F8F642972D4E60067FF22 /* AVPlayer+TimeControlStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F8F632972D4E60067FF22 /* AVPlayer+TimeControlStatus.swift */; };
+		BF8F8F662972D59A0067FF22 /* AVPlayerItem+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F8F652972D59A0067FF22 /* AVPlayerItem+Status.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		BF8F8F582972C5EF0067FF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF8F8F5B2972C5EF0067FF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF8F8F5D2972C5EF0067FF22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF8F8F632972D4E60067FF22 /* AVPlayer+TimeControlStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+TimeControlStatus.swift"; sourceTree = "<group>"; };
+		BF8F8F652972D59A0067FF22 /* AVPlayerItem+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerItem+Status.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				BF8F8F4F2972C5ED0067FF22 /* AppDelegate.swift */,
 				BF8F8F512972C5ED0067FF22 /* SceneDelegate.swift */,
 				BF8F8F532972C5ED0067FF22 /* ViewController.swift */,
+				BF8F8F632972D4E60067FF22 /* AVPlayer+TimeControlStatus.swift */,
+				BF8F8F652972D59A0067FF22 /* AVPlayerItem+Status.swift */,
 				BF8F8F552972C5ED0067FF22 /* Main.storyboard */,
 				BF8F8F582972C5EF0067FF22 /* Assets.xcassets */,
 				BF8F8F5A2972C5EF0067FF22 /* LaunchScreen.storyboard */,
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8F8F642972D4E60067FF22 /* AVPlayer+TimeControlStatus.swift in Sources */,
 				BF8F8F542972C5ED0067FF22 /* ViewController.swift in Sources */,
 				BF8F8F502972C5ED0067FF22 /* AppDelegate.swift in Sources */,
 				BF8F8F522972C5ED0067FF22 /* SceneDelegate.swift in Sources */,
+				BF8F8F662972D59A0067FF22 /* AVPlayerItem+Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

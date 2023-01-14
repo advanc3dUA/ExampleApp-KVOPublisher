@@ -7,14 +7,21 @@
 
 import UIKit
 import AVKit
-import AVFoundation
 import Combine
 
 class ViewController: UIViewController {
+    
+    //MARK: - Outlets
 
     @IBOutlet weak var videoContainer: UIView!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var logTextView: UITextView!
     
     private var playerController: AVPlayerViewController!
+    
+    //MARK: - Viewcycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +31,6 @@ class ViewController: UIViewController {
 
     private func setupPlayerController() {
         playerController = AVPlayerViewController()
-//        addChild(playerController)
 
         videoContainer.addSubview(playerController.view)
         playerController.view.frame = videoContainer.bounds
@@ -35,6 +41,8 @@ class ViewController: UIViewController {
         player.volume = 0
         playerController.player = player
     }
+    
+    //MARK: - Actions
 
     @IBAction func loadVideoPressed(_ sender: UIButton) {
         playerController.player?.pause()
@@ -43,5 +51,15 @@ class ViewController: UIViewController {
 
         playerController.player?.replaceCurrentItem(with: playItem)
     }
+    @IBAction func playPressed(_ sender: UIButton) {
+        playerController.player?.play()
+    }
+    
+    @IBAction func pausePressed(_ sender: UIButton) {
+        playerController.player?.pause()
+    }
+    
+    private func appendLog(_ text: String) {
+        logTextView.text.append("\(text)\n")
+    }
 }
-
