@@ -49,15 +49,7 @@ class ViewController: UIViewController {
         
         player.publisher(for: \.timeControlStatus)
             .removeDuplicates()
-            .scan(
-                (prior: AVPlayer.TimeControlStatus?.none, new: AVPlayer.TimeControlStatus?.none)
-            ) {
-                (tuple, newValue) in
-                (prior: tuple.new, new: newValue)
-            }
-            .map {
-                (prior: $0.prior, new: $0.new!)
-            }
+            .withPriorValue()
             .sink { [weak self] tuple in
                 self?.appendLog("\(tuple.prior?.stringValue ?? "") → \(tuple.new.stringValue)")
                 
@@ -89,7 +81,7 @@ class ViewController: UIViewController {
     @IBAction func loadVideoPressed(_ sender: UIButton) {
         playerController.player?.pause()
 
-        let playItem = AVPlayerItem(url: URL(string: "https://download.samplelib.com/mp4/sample-5s.mp4")!)
+        let playItem = AVPlayerItem(url: URL(string: "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8")!)
 
         playerController.player?.replaceCurrentItem(with: playItem)
         
