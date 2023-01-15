@@ -76,14 +76,8 @@ class ViewController: UIViewController {
         playerItemStatusCancellable = playItem.publisher(for: \.status)
             .sink { [weak self] status in
                 self?.statusLabel.text = status.stringValue
+                self?.videoIsLoaded = status == .readyToPlay ? true : false
             }
-        
-        playItem.publisher(for: \.status)
-            .map { $0 == .readyToPlay }
-            .sink { [weak self] in
-                self?.videoIsLoaded = $0
-            }
-            .store(in: &cancellables)
     }
     
     @IBAction func playPressed(_ sender: UIButton) {
