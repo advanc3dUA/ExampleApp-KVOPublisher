@@ -47,6 +47,26 @@ class ViewController: UIViewController {
         player.volume = 0
         playerController.player = player
         
+        player.publisher(for: \.timeControlStatus)
+            .removeDuplicates()
+            .scan(
+                (prior: AVPlayer.TimeControlStatus?.none, new: AVPlayer.TimeControlStatus?.none)
+            ) {
+                (tuple, newValue) in
+                (prior: tuple.new, new: newValue)
+            }
+            .map {
+                (prior: $0.prior, new: $0.new!)
+            }
+            .sink { [weak self] tuple in
+                self?.appendLog("\(tuple.prior?.stringValue ?? "") → \(tuple.new.stringValue)")
+                
+                //Scroll to the bottom
+                let range = NSMakeRange((self?.logTextView.text.count ?? 1) - 1, 0)
+                self?.logTextView.scrollRangeToVisible(range)
+            }
+            .store(in: &cancellables)
+        
         let isPlaying = player.publisher(for: \.rate)
             .map { $0 > 0 }
         
